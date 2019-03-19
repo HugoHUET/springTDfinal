@@ -60,9 +60,8 @@ public class UserController {
 	}
 	
 	@RequestMapping("logout")
-	public String log0ut(ModelMap model, HttpSession session) {
-		session.setAttribute("name", null);
-		return "user/index";
+	public RedirectView log0ut(ModelMap model, HttpSession session) {
+		return new RedirectView("/accueil");
 	}
 
 
