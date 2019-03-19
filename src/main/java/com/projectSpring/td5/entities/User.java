@@ -14,14 +14,17 @@ public class User {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
+	private String login;
+	private String password;
+	private String email;
+	private String identity;
+	
 	@OneToMany
 	private List<Script> scripts;
 	
 	public User() {
 		
 	}
-
-
 	public int getId() {
 		return id;
 	}
@@ -31,7 +34,30 @@ public class User {
 		this.id = id;
 	}
 
-
+	public String getLogin() {
+		return login;
+	}
+	public void setLogin(String login) {
+		this.login = login;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getIdentity() {
+		return identity;
+	}
+	public void setIdentity(String identity) {
+		this.identity = identity;
+	}
 	public List<Script> getScripts() {
 		return scripts;
 	}
