@@ -99,7 +99,7 @@ public class UserController {
 	}
 	
 	@RequestMapping("delete/{id}")
-	public RedirectView delete(@PathVariable int id, HttpSession session) {
+	public RedirectView deleteScript(@PathVariable int id, HttpSession session) {
 		User user = (User) session.getAttribute("user");
 		if(user != null) {
 			Optional<Script> optS = scriptsRepo.findById(id);

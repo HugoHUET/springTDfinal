@@ -1,0 +1,27 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" rel="stylesheet">
+<div style="margin-top:2%;margin-left:2%;margin-right:2%;">
+	<a class="ui button green" tabindex="0" style="margin-bottom:2%;" href="../{{histo.script.id}}">
+	  <div><i class="arrow alternate circle left outline large icon"></i> Retour à l'historique</div>
+	</a>
+	<a class="ui button green" tabindex="0" style="margin-bottom:2%;" href="../../index">
+	  <div><i class="arrow alternate circle left outline large icon"></i> Retour à l'accueil</div>
+	</a>
+	<div class="field" style="margin-bottom:1%;">
+		<label>Date de modification</label>
+		<div class="ui segment">
+			<PRE>{{histo.date}}</PRE>
+		</div>
+	</div>
+	<div class="field" style="margin-bottom:1%;">
+		<label>Commentaire du script de l'historique</label>
+		<div class="ui segment">
+			<PRE>{{histo.comment}}</PRE>
+		</div>
+	</div>
+	<div class="field">
+		<label>Contenu du script de l'historique</label>
+		<div class="ui segment">
+			<PRE>{{histo.content}}</PRE>
+		</div>
+	</div>
+</div>

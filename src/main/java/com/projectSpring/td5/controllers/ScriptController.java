@@ -136,6 +136,8 @@ public class ScriptController {
 			scriptsRepo.save(s);
 		}
 		
-		return new RedirectView("../index");
+		return new RedirectView("../index"); 
 	}
+	
+	
 }

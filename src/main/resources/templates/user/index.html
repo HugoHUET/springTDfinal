@@ -15,7 +15,7 @@
 					    </div>
 					</div>
 				</div>
-				<a class="ui animated button green" tabindex="0" style="width:96%;" href="script/new">
+				<a class="ui animated button green" tabindex="0" style="width:96%; margin-bottom:2%;" href="script/new">
 				  <div class="visible content"><i class="plus icon"></i></div>
 				  <div class="hidden content">
 				    Ajouter un script
@@ -31,14 +31,19 @@
 					</thead>
 					<tbody>
 						{{#script}}
-							<tr onclick="document.location.href='/user/script/{{id}}'" href="test" style="cursor: pointer;">
+							<tr onclick="document.location.href='/user/script/{{id}}'" style="cursor: pointer;">
 								<td><i class="file outline icon"></i>{{title}}</td>
 								<td>{{description}}</td>
 								<td class="right aligned">{{creationData}}</td>
-								<td>
+								<td style="text-align:center;">
 									<a href="delete/{{id}}"><i class="circular red close icon"></i></a>
-									<br>
 									<i class="circular eye icon"></i>
+									<a class="ui animated button lightgrey" tabindex="0" style="width:96%; margin-top:2%;" href="history/{{id}}">
+									  <div class="visible content"><i class="backward icon"></i></div>
+									  <div class="hidden content">
+									    Voir l'historique
+									  </div>
+									</a>
 								</td>
 							</tr>
 						{{/script}}
