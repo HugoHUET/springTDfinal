@@ -1,0 +1,49 @@
+<head>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" rel="stylesheet">
+</head>
+
+<div style="margin:2%;">
+	<form class="ui form" modelAttribute="script" method="post">
+	  <h4 class="ui dividing header">Informations principales</h4>
+	  <div class="field">
+	    <label>Titre</label>
+	    <div class="two fields">
+	      <div class="field">
+	        <input type="text" path="title" name="title" placeholder="Title" required>
+	      </div>
+	    </div>
+	  </div>
+	  <div class="two fields">
+	    <div class="field">
+	      <label>Language</label>
+	      <select class="ui dropdown" path="languageId" name="languageId" required>
+	        <option value="" selected>Languages</option>
+	        {{#lang}}
+		    	<option value="{{id}}">{{name}}</option>
+		    {{/lang}}
+	      </select>
+	    </div>
+	    <div class="field">
+	      <label>Categorie</label>
+	      <select class="ui fluid dropdown" path="categorieId" name="categorieId" required>
+	        <option value="" selected>Categories</option>
+	        {{#categ}}
+		    	<option value="{{id}}">{{name}}</option>
+		    {{/categ}}
+	      </select>
+	    </div>
+	  </div>
+	  <h4 class="ui dividing header">Contenu</h4>
+	  <div class="field">
+  		<label>Description</label>
+ 		<textarea path="description" name="description" rows="2"></textarea>
+  	  </div>
+  	  <div class="field">
+	    <label>Contenu du script</label>
+	    <textarea path="content" name="content"></textarea>
+	  </div>
+	  <a class="ui negative button" tabindex="1" href="../index">Annuler</a>
+	  <button class="ui positive button" tabindex="0" type="submit">Ajouter le script</button>
+	</form>
+	
+</div>
