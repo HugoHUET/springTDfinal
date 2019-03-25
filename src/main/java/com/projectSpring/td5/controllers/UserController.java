@@ -37,13 +37,12 @@ public class UserController {
 	
 	@RequestMapping("create")
 	public void crea(ModelMap model) {
-		User user = usersRepo.findById(2);
+		User user = usersRepo.findById(3);
 		/*User user = new User();
 		user.setEmail("machin@gmail.com");
 		user.setIdentity("Michel");
 		user.setLogin("login");
 		user.setPassword("password");
-		
 		userRepo.save(user);*/
 		
 		Script script = new Script();

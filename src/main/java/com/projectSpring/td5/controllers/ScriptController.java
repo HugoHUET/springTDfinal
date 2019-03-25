@@ -92,18 +92,22 @@ public class ScriptController {
 			Optional<Script> opt = scriptsRepo.findById(id);
 			if(opt.isPresent()) {
 				Script s = opt.get();
-				model.addAttribute("script", s);
-				
-				List<Language> liLang = languagesRepo.findAll();
-				liLang.remove(s.getLanguage());
-				model.addAttribute("lang", liLang);
-				
-				List<Categorie> liCat = categoriesRepo.findAll();
-				liCat.remove(s.getCategorie());
-				
-				model.addAttribute("lang", liLang);
-				model.addAttribute("categ", liCat);
-				return "script/update";
+				if(user.getId() == s.getUser().getId()) {
+					model.addAttribute("script", s);
+					
+					List<Language> liLang = languagesRepo.findAll();
+					liLang.remove(s.getLanguage());
+					model.addAttribute("lang", liLang);
+					
+					List<Categorie> liCat = categoriesRepo.findAll();
+					liCat.remove(s.getCategorie());
+					
+					model.addAttribute("lang", liLang);
+					model.addAttribute("categ", liCat);
+					return "script/update";
+				}else {
+					return "script/redirect";
+				}
 			}
 			return "";
 		}else {
