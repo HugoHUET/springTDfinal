@@ -66,7 +66,6 @@ public class HistoryController {
 		User user = (User) session.getAttribute("user");
 		if(user != null) {
 			Optional<History> optH = historiesRepo.findById(id);
-			System.out.println(optH.toString());
 			if(optH.isPresent()) {
 				History h = optH.get();
 				model.addAttribute("histo", h);

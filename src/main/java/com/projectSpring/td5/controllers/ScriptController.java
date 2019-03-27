@@ -10,7 +10,9 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,6 +30,9 @@ import com.projectSpring.td5.repositories.HistoriesRepository;
 import com.projectSpring.td5.repositories.LanguagesRepository;
 import com.projectSpring.td5.repositories.ScriptsRepository;
 
+import io.github.jeemv.springboot.vuejs.VueJS;
+import io.github.jeemv.springboot.vuejs.utilities.Http;
+
 @Controller
 @RequestMapping("/user/script/")
 public class ScriptController {
@@ -44,7 +49,10 @@ public class ScriptController {
 	@Autowired
 	private HistoriesRepository historiesRepo;
 	
-	@RequestMapping("new")
+	@Autowired
+	private VueJS vue;
+	
+	@GetMapping("new")
 	public Object crea(ModelMap model, HttpSession session) {
 		User user = (User) session.getAttribute("user");
 		if(user != null) {
@@ -85,7 +93,7 @@ public class ScriptController {
 		return new RedirectView("../index");
 	}
 	
-	@RequestMapping("{id}")
+	@GetMapping("{id}")
 	public Object getScript(@PathVariable int id, ModelMap model, HttpSession session) {
 		User user = (User) session.getAttribute("user");
 		if(user != null) {
@@ -143,5 +151,18 @@ public class ScriptController {
 		return new RedirectView("../index"); 
 	}
 	
+	@GetMapping("search")
+	public String test(Model model) {
+		model.addAttribute("vue", vue);
+		vue.addData("search", "");
+		vue.addMethod("test", "var self=this;"+Http.post(
+				"/search/getScripts", 
+				(Object)"{recherche:self.search}",
+				"console.log(self.search)")
+		);
+		
+		
+		return "vueJS/search";
+	}
 	
 }

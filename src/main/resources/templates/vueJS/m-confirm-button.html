@@ -1,0 +1,24 @@
+<v-dialog v-model="dialog" :width="width">
+  <template v-slot:activator="{ on }">
+    <v-btn color="red lighten-2" dark v-on="on"><slot></slot></v-btn>
+  </template>
+ 
+  <v-card>
+    <v-card-title class="headline grey lighten-2" primary-title>
+      {{title}}
+    </v-card-title>
+ 
+    <v-card-text>
+      {{message}}
+    </v-card-text>
+ 
+    <v-divider></v-divider>
+ 
+    <v-card-actions>
+      <v-spacer></v-spacer>
+      <v-btn color="success" @click="valid">{{validatecaption}}</v-btn>
+      <v-btn color="error" @click="canc">{{cancelcaption}}</v-btn>
+      test
+    </v-card-actions>
+  </v-card>
+</v-dialog>
