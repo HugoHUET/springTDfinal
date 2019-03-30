@@ -2,10 +2,9 @@ package com.projectSpring.td5;
 
 public class Recherche {
 	String recherche;
-
-	public Recherche(String recherche) {
+	
+	public Recherche() {
 		super();
-		this.recherche = recherche;
 	}
 
 	public String getRecherche() {

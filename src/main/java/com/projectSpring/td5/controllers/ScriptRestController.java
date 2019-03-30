@@ -1,5 +1,6 @@
 package com.projectSpring.td5.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,16 +22,16 @@ public class ScriptRestController {
 	private ScriptsRepository scriptsRepo;
 	
 	@ResponseBody
-	@PostMapping("getScripts")
-	public String getScript(@RequestBody Recherche search){
-		//User user = (User) session.getAttribute("user");
-		//if(user != null) {
-			System.out.println("recherche : ");
-			return "ok";
-			//return scriptsRepo.findAllByUser_id(user.getId());
-		//}else {
-		//	return null;
-		//}
+	@PostMapping("search")
+	public List<Script> getScript(@RequestBody Recherche search){
+		List<Script> allScript = scriptsRepo.findAll();
+		List<Script> scriptContains = new ArrayList<Script>();
+		for (Script s : allScript) {
+			if(s.getTitle().toUpperCase().contains(search.getRecherche().toUpperCase())) {
+				scriptContains.add(s);
+			}
+		}
+		return scriptContains;
 		
 	}
 }

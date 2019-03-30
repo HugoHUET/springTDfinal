@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.projectSpring.td5.Recherche;
 import com.projectSpring.td5.entities.Categorie;
 import com.projectSpring.td5.entities.History;
 import com.projectSpring.td5.entities.Language;
@@ -154,13 +155,23 @@ public class ScriptController {
 	@GetMapping("search")
 	public String test(Model model) {
 		model.addAttribute("vue", vue);
+		Recherche r = new Recherche();
 		vue.addData("search", "");
+		vue.addDataRaw("listResult", "[]");
 		vue.addMethod("test", "var self=this;"+Http.post(
-				"/search/getScripts", 
-				(Object)"{recherche:self.search}",
-				"console.log(self.search)")
+					"/search/search", 
+					(Object)"{recherche:self.search}",
+					" self.listResult = []; "
+					+ "response.data.forEach("
+						+ "function(element) {"
+							+ "self.listResult.push("
+								+ "{title: element.title}"
+							+ ")"
+						+ "}"
+					+ "); "
+				)
 		);
-		
+		vue.addDataRaw("headers", "[{text:'Title', value:'title'},{text:'Description', value:'description'}, {text:'Date de création', value:'creationData'}]");
 		
 		return "vueJS/search";
 	}

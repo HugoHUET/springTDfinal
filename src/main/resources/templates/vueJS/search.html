@@ -13,6 +13,19 @@
       <v-btn color="blue darken-1" flat @click="">Cancel</v-btn>
 	  <v-btn color="blue darken-1" flat @click="">Save</v-btn>
     </v-toolbar>
+    <template>
+		 <v-data-table
+		   :headers="headers"
+		   :items="listResult"
+		   class="elevation-1"
+		 >
+	    <template v-for="script in listResult">
+	      <td><%props.item.title%></td>
+	      <td class="text-xs"><%props.item.description%></td>
+	      <td class="text-xs"><%props.item.creationData%></td>
+	    </template>
+	  </v-data-table>
+	</template>
   </div>
 </template>
 {{>vueJS/footer}}
